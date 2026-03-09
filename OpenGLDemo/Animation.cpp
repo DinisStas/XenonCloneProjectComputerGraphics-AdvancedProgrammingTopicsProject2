@@ -28,13 +28,6 @@ void Animation::Load(const char* filepath, int rows, int columns,
         return;
     }
 
-    // Remove magenta (255, 0, 255) — same fix as the SDL version
-    for (int i = 0; i < width * height * 4; i += 4) {
-        if (data[i] == 255 && data[i + 1] == 0 && data[i + 2] == 255) {
-            data[i] = data[i + 1] = data[i + 2] = data[i + 3] = 0;
-        }
-    }
-
     frameSize = glm::vec2((float)width / columns, (float)height / rows);
     numFrames = (frames == -1) ? (columns * rows) : frames;
 
